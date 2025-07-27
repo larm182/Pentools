@@ -53,7 +53,7 @@ pentesting-commands-app/
 ### Opción 1: Servidor Local
 ```bash
 # Navegar al directorio del proyecto
-cd pentesting-commands-app
+cd Pentools
 
 # Iniciar servidor HTTP local
 python3 -m http.server 8000
