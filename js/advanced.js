@@ -199,7 +199,7 @@ function exportToPDF() {
         <!DOCTYPE html>
         <html>
         <head>
-            <title>Comandos de Pentesting - Cheatsheet</title>
+            <title>Pentools - Comandos de Herramientas de Pentesting - Cheatsheet</title>
             <style>
                 body {
                     font-family: Arial, sans-serif;
@@ -241,7 +241,7 @@ function exportToPDF() {
             </style>
         </head>
         <body>
-            <h1>Comandos de Pentesting - Cheatsheet</h1>
+            <h1>Pentools - Comandos de Herramientas de Pentesting - Cheatsheet</h1>
             ${toolCommandsSection.innerHTML.replace(/Copiar/g, '')}
         </body>
         </html>
