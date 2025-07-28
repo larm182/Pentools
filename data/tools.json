@@ -256,6 +256,70 @@
     ]
   },
   {
+  "category": "Detección de Vulnerabilidades",
+  "name": "cURL",
+  "description": "Herramienta de línea de comandos para transferir datos mediante protocolos como HTTP, HTTPS, FTP, etc.",
+  "commands": [
+    {
+      "type": "Descargar un archivo",
+      "cmd": "curl -O https://example.com/file.zip",
+      "description": "Descarga un archivo y lo guarda con su nombre original."
+    },
+    {
+      "type": "Enviar una petición GET",
+      "cmd": "curl https://api.example.com/data",
+      "description": "Realiza una solicitud GET a una URL."
+    },
+    {
+      "type": "Enviar una petición POST",
+      "cmd": "curl -X POST -d '{\"key\":\"value\"}' -H 'Content-Type: application/json' https://api.example.com/data",
+      "description": "Envía datos JSON mediante POST."
+    },
+    {
+      "type": "Autenticación básica",
+      "cmd": "curl -u usuario:contraseña https://api.example.com/secure",
+      "description": "Accede a un recurso protegido con autenticación básica."
+    },
+    {
+      "type": "Seguir redirecciones",
+      "cmd": "curl -L https://example.com",
+      "description": "Sigue redirecciones HTTP automáticamente."
+    },
+    {
+      "type": "Descargar con cabeceras personalizadas",
+      "cmd": "curl -H 'User-Agent: MyAgent' -H 'Authorization: Bearer token' https://api.example.com",
+      "description": "Incluye cabeceras HTTP personalizadas en la solicitud."
+    },
+    {
+      "type": "Guardar salida en un archivo",
+      "cmd": "curl -o output.html https://example.com",
+      "description": "Guarda la respuesta en un archivo específico."
+    },
+ 
+    {
+      "type": "Petición GET con JWT",
+      "cmd": "curl -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c' https://api.example.com/protected-data",
+      "description": "Accede a un recurso protegido con un token JWT en la cabecera."
+    },
+    {
+      "type": "Petición POST con JWT y JSON",
+      "cmd": "curl -X POST -H 'Content-Type: application/json' -H 'Authorization: Bearer tu_token_jwt_aqui' -d '{\"key\":\"value\"}' https://api.example.com/data",
+      "description": "Envía datos JSON a un endpoint protegido con JWT."
+    },
+    {
+      "type": "Autenticación básica",
+      "cmd": "curl -u usuario:contraseña https://api.example.com/secure",
+      "description": "Accede a un recurso protegido con autenticación básica."
+    },
+    {
+      "type": "Guardar salida en un archivo",
+      "cmd": "curl -o response.json https://api.example.com/data",
+      "description": "Guarda la respuesta JSON en un archivo."
+    }
+  ]
+},
+
+  {
     "category": "Detección de Vulnerabilidades",
     "name": "WPScan",
     "description": "Escáner de seguridad específico para sitios web WordPress.",
@@ -1346,6 +1410,4 @@
       }
     ]
   }
-
 ]
-
